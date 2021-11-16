@@ -33,6 +33,32 @@ signed main(void)
 {
   std::cin.tie(nullptr);
   std::ios_base::sync_with_stdio(false);
+  int n;
+  cin >> n;
+  vector<int> t(n);
+  REP(i, n)
+  {
+    cin >> t[i];
+  }
+
+  sort(t.rbegin(), t.rend());
+
+  vector<int> A = {0};
+  vector<int> B = {0};
+
+  REP(i, n)
+  {
+    if (accumulate(A.begin(), A.end(), 0) < accumulate(B.begin(), B.end(), 0))
+    {
+      A.push_back(t[i]);
+    }
+    else
+    {
+      B.push_back(t[i]);
+    }
+  }
+
+  cout << max(accumulate(A.begin(), A.end(), 0), accumulate(B.begin(), B.end(), 0)) << endl;
 
   return 0;
 }

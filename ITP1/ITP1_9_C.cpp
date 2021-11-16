@@ -5,34 +5,40 @@ typedef long long ll;
 #define FOR(i, a, b) for (ll i = a; i <= ll(b); i++)
 #define FORD(i, a, b) for (ll i = a; i >= ll(b); i--)
 #define FORA(i, I) for (const auto &i : I)
-template <class T>
-bool chmax(T &a, const T &b)
-{
-  if (a < b)
-  {
-    a = b;
-    return 1;
-  }
-  return 0;
-}
-template <class T>
-bool chmin(T &a, const T &b)
-{
-  if (b < a)
-  {
-    a = b;
-    return 1;
-  }
-  return 0;
-}
 using namespace std;
-#pragma GCC optimize("-O3")
-//---------------------------------------------------------------------------------------------------
 
-signed main(void)
+// ----- for manipulation -----
+// std::fixed << std::setprecision(15)
+
+int main(void)
 {
   std::cin.tie(nullptr);
   std::ios_base::sync_with_stdio(false);
+
+  int n;
+  vector<int> won(2);
+  cin >> n;
+
+  REP(i, n)
+  {
+    string a, b;
+    cin >> a >> b;
+    if (a > b)
+    {
+      won[0] += 3;
+    }
+    else if (a < b)
+    {
+      won[1] += 3;
+    }
+    else
+    {
+      won[0]++;
+      won[1]++;
+    }
+  }
+
+  cout << won[0] << " " << won[1] << endl;
 
   return 0;
 }

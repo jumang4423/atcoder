@@ -5,34 +5,32 @@ typedef long long ll;
 #define FOR(i, a, b) for (ll i = a; i <= ll(b); i++)
 #define FORD(i, a, b) for (ll i = a; i >= ll(b); i--)
 #define FORA(i, I) for (const auto &i : I)
-template <class T>
-bool chmax(T &a, const T &b)
-{
-  if (a < b)
-  {
-    a = b;
-    return 1;
-  }
-  return 0;
-}
-template <class T>
-bool chmin(T &a, const T &b)
-{
-  if (b < a)
-  {
-    a = b;
-    return 1;
-  }
-  return 0;
-}
 using namespace std;
-#pragma GCC optimize("-O3")
-//---------------------------------------------------------------------------------------------------
 
-signed main(void)
+int main(void)
 {
+  string s;
   std::cin.tie(nullptr);
   std::ios_base::sync_with_stdio(false);
+
+  getline(std::cin, s);
+
+  REP(i, s.size())
+  {
+    if ((s[i] >= 'A' && s[i] <= 'Z'))
+    {
+      cout << (char)tolower(s[i]);
+    }
+    else if ((s[i] >= 'a' && s[i] <= 'z'))
+    {
+      cout << (char)toupper(s[i]);
+    }
+    else
+    {
+      cout << s[i];
+    }
+  }
+  cout << endl;
 
   return 0;
 }
