@@ -30,10 +30,30 @@ using namespace std;
 #pragma GCC optimize("-O3")
 //---------------------------------------------------------------------------------------------------
 
+vector<ll> dp(100010, INF);
+
 signed main(void)
 {
   std::cin.tie(nullptr);
   std::ios_base::sync_with_stdio(false);
+
+  ll n;
+  cin >> n;
+  vector<ll> h(n);
+  REP(i, n)
+  {
+    cin >> h[i];
+  }
+  dp[0] = 0;
+  FOR(i, 1, n)
+  {
+    chmin(dp[i], dp[i - 1] + abs(h[i] - h[i - 1]));
+    if (i > 1) {
+      chmin(dp[i], dp[i - 2] + abs(h[i] - h[i - 2]));
+    }
+  }
+
+  cout << dp[n - 1] << endl;
 
   return 0;
 }
